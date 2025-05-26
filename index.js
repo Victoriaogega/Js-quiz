@@ -1,7 +1,4 @@
 // question 1
-
-const { completion } = require("yargs")
-
 // Create a CustomerOrder class with properties: orderId (string), items (array of objects with name, quantity, price), and status (string). Add a method calculateTotal() that returns the total order amount. Write an async method processPayment() that simulates payment with a Promise that resolves after 2 seconds. After calling the method, change the status to "paid" and print a success message.
 
 // pseudocode
@@ -31,10 +28,11 @@ let customer = new CustomerOrder("cu11",[
     {name:"stickynotes",quantity:2,price:250}
 ])
 
-customer.processPayment().then(()=>{
-    console.log("The payment is over");
-    
-})
+
+console.log(customer.processPayment());
+ console.log(customer.calculateTotal());
+  
+
 
 
 // Question 2
@@ -62,8 +60,8 @@ TeamMember.prototype.checkProgress = new Promise((resolve,reject)=>{
 })
 
 let victoria = new TeamMember("victoria","student",[
-    {title:"DAS", completion:False},
-    {title:"js",completion: True}
+    {title:"DAS", completion:false},
+    {title:"js",completion: true}
 ])
 
 console.log(victoria.completeTask());
@@ -107,6 +105,7 @@ candidate.sendConfirmation()
 // pseudocode
 // create a class with its properties
 // create a method update Progress that modifies the students progress by replacing the old value with the new value
+// Create a method generate certificate that only gives certificates to students whose progress is 100 only. 
 
 
 
@@ -129,9 +128,7 @@ async function generateCertificate(studentName) {
    } }catch(error){
     console.log("Incomplete progress.");
     
-   }
-   
-   
+   } 
 }
 
 let course = new Course("Mathematics","Ochieng",[
