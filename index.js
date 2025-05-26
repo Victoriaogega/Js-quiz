@@ -18,8 +18,7 @@ class CustomerOrder{
 }
 async function processPayment() {
   await new Promise((resolve,reject)=> setTimeout(resolve,2000))
-   this.status = "paid";
-   resolve(`Your payment of ${this.orderId} has been successful.`)
+   if(this.status = "paid"){resolve(`Your payment of ${this.orderId} has been successful.`)}
 }
 
 let customer = new CustomerOrder("cu11",[
@@ -29,7 +28,7 @@ let customer = new CustomerOrder("cu11",[
 ])
 
 
-console.log(customer.processPayment());
+console.log(customer.processPayment);
  console.log(customer.calculateTotal());
   
 
@@ -51,7 +50,9 @@ class TeamMember{
     }
 }
 TeamMember.prototype.completeTask = function(taskTitle){
-return this.tasks.filter(task => task.completion == true) = completed
+let completionStatus=  this.tasks.filter(task => task.completion == true) 
+completionStatus = "Completed"
+return completionStatus
 }
 
 TeamMember.prototype.checkProgress = new Promise((resolve,reject)=>{
@@ -65,7 +66,7 @@ let victoria = new TeamMember("victoria","student",[
 ])
 
 console.log(victoria.completeTask());
-console.log(victoria.checkProgress());
+console.log(victoria.checkProgress);
 
 
 
