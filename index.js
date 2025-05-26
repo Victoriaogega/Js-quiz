@@ -16,7 +16,7 @@ class CustomerOrder{
         this.status = status
     }
     calculateTotal() {
-        for(item in this.items){this.item.reduce((acc, item)=> acc + (item.quantity * item.price),0)}
+   return this.items.reduce((acc, item)=> acc + (item.quantity * item.price),0)
         }
 }
 async function processPayment() {
@@ -72,10 +72,6 @@ console.log(victoria.checkProgress());
 
 
 
-
-
-
-
 // Build a Candidate class with properties: name, position, and interviews (array of objects with date, status). Add a method scheduleInterview(date) that pushes a new interview with status "pending". Then write an async function sendConfirmation() that returns a Promise that resolves after 1 second with a message "Interview confirmed with [name]", and log the message.
 class Candidate{
     constructor(name,position,interviews){
@@ -84,14 +80,35 @@ class Candidate{
         this.interviews = interviews
     }
     scheduleInterviews(date){
-
+        this.interviews.push({date:"12-07-2025",status:"pending"})
+        return this.interviews
     }
 }
+async function sendConfirmation(){
+await new Promise((resolve,reject)=> setTimeout(resolve,1000))
+if(this.interviews.status === "confirmed"){
+resolve("Interview confirmed")
+console.log(`${this.name} your interview has been confirmed.`);
+}
 
+}
+
+let candidate = new Candidate("Ogega","machine learning engineer",[
+    {date:"12-24-2025",status:"pending"},
+    {date:"02-07-2025",status:"pending"},
+    {date:"23-07-2025",status:"confirmed"}
+])
+candidate.scheduleInterviews()
+candidate.sendConfirmation()
 
 
 
 // Design a Course class with properties: title, instructor, and students (array of student objects with name and progress). Add a method updateProgress(studentName, value) that modifies the student’s progress. Create an async method generateCertificate(studentName) that returns a Promise resolving only if the progress is 100, otherwise reject with "Incomplete progress".
+// pseudocode
+// create a class with its properties
+// create a method update Progress that modifies the students progress by replacing the old value with the new value
+
+
 
 class Course{
     constructor(title,instructor,students){
@@ -100,9 +117,31 @@ this.instructor = instructor
 this.students = students
     }
     updateProgress(studentName,value){
-
+let updatedValues = {name:studentName,progress:value}
+Object.assign(this.students,updatedValues)
+return this.students
     }
 }
+async function generateCertificate(studentName) {
+   new Promise ((resolve,reject)) 
+   try{if(this.students.progress >= 100){
+    resolve(`${studentName} you have received your certificate, congratulatuos!!` )
+   } }catch(error){
+    console.log("Incomplete progress.");
+    
+   }
+   
+   
+}
+
+let course = new Course("Mathematics","Ochieng",[
+    {name:"tesfay",progress:60},
+    {name:"yordanos",progress:85},
+    {name:"mahado",progress:100}
+
+])
+course.updateProgress()
+course.generateCertificate()
 
 
 // Create a StockTracker class with a property watchlist (array of objects with symbol, threshold, currentPrice). Add a method updatePrice(symbol, newPrice) that updates the stock’s current price. Write an async method checkAlerts() that loops through the watchlist and returns a Promise resolving with a list of stocks where currentPrice >= threshold, or rejecting with "No alerts triggered".
@@ -111,7 +150,7 @@ class StockTracker{
 this.watchlist = watchlist
     }
 updatePrice(symbol, newPrice){
-
+    
 }
 }
 async function checkAlerts() {
